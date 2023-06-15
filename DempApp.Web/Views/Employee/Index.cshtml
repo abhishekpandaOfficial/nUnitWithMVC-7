@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["ResultOK"] !=null)
+{
+        <h1 class="alert-success">@TempData["ResultOK"]</h1>
+}
+
+<div class="container shadow p-5">
+    <h1 class="text-center mb-3">CRUD Operation in .NET Core 7 and PostgreSQL</h1>
+    <div class="col mb-3">
+        <a asp-controller="Employee" asp-action="Create" class="btn btn-lg btn-primary">
+            <i class="bi bi-file-plus-fill">Add Employee</i>
+        </a>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Designation</th>
+                <th scope="col">Address</th>
+                <th scope="col">Created On</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(var item in Model)
+                {
+                    <tr>
+                        <td width="20%">@item.Name</td>
+                        <td width="20%">@item.Designation</td>
+                        <td width="25%">@item.Address</td>
+                        <td width="20%">@item.recordCreatedOn</td>
+                        <td>
+                            <div role="group" class="w-60 btn-group">
+                                <a asp-controller="Employee" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-pencil-square"></i>Edit
+                                </a>&nbsp;
+                                <a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                                    <i class="bi bi-trash-fill"></i>Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                   
+                }
+        </tbody>
+
+    </table>
+
+</div>
