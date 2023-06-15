@@ -99,7 +99,7 @@ namespace DempApp.Web.Controllers
             }
             _dbContext.Employees.Remove(deletedrecord);
             _dbContext.SaveChanges();
-            TempData["resultOK"] = "Employe Record Deleted Successfully";
+            TempData["resultOK"] = "Employe Record Deleted Successfully from the PostgreSQL";
             return RedirectToAction("Index");
         }
     }
